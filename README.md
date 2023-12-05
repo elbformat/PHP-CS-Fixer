@@ -37,6 +37,20 @@ projects. This tool does not only detect them, but also fixes them for you.
 
 ## Documentation
 
+### Run with docker
+
+You can take a ready built docker image to run ``php-cs-fixer``.
+
+```console
+docker run ghcr.io/php-cs-fixer/php-cs-fixer:latest fix src
+```
+
+To use a custom config, just map it into the container
+
+```console
+docker run -v $(pwd)/.php-cs-fixer.dist.php:/var/www/.php-cs-fixer.php ghcr.io/php-cs-fixer/php-cs-fixer:latest fix src
+```
+
 ### Installation
 
 The recommended way to install PHP CS Fixer is to use [Composer](https://getcomposer.org/download/)
