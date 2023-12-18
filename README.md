@@ -42,14 +42,22 @@ projects. This tool does not only detect them, but also fixes them for you.
 You can take a ready built docker image to run ``php-cs-fixer``.
 
 ```console
-docker run ghcr.io/php-cs-fixer/php-cs-fixer:latest fix src
+docker run -v $(pwd):/var/www ghcr.io/php-cs-fixer/php-cs-fixer:latest fix src
+```
+or integrate as check into gitlab-ci like this
+```yaml
+php-cs-fixer:
+  image: ghcr.io/php-cs-fixer/php-cs-fixer:latest
+  script:
+    php-cs-fixer fix --diff --dry-run --format=txt src
 ```
 
-To use a custom config, just map it into the container
-
-```console
-docker run -v $(pwd)/.php-cs-fixer.dist.php:/var/www/.php-cs-fixer.php ghcr.io/php-cs-fixer/php-cs-fixer:latest fix src
-```
+There are different tags for each stability and php version with syntax `<php-cs-fixer-version>-<php-version>`. For example
+* `3.41.1-php8.1`
+* `3.41-php8.2`
+* `3-latest`
+* `latest` (latest stable cs-fixer and latest stable php version)
+* `dev` (current build from main)
 
 ### Installation
 

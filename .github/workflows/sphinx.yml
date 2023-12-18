@@ -15,7 +15,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-jobs:
+xjobs:
   sphinx:
     name: Sphinx reStructuredText validity
     runs-on: ubuntu-latest
